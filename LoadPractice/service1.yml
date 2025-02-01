@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysvc1
+  labels:
+    author: rakesh
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 80
+      nodePort: 30099
+      port: 80
+  selector:
+    app: nginx
+    type: revproxy
+...

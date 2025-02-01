@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: nginx-depl
+  labels:
+    app: proxy
+spec:
+  replicas: 3
+  selector: 
+    matchLabels: 
+      app: nginx
+      type: revproxy
+  template:
+    metadata: 
+      name: nginx-pod
+      labels: 
+       app: nginx
+       type: revproxy
+    spec: 
+      containers: 
+        - name: mynginx
+          image: nginx
+...          
+
